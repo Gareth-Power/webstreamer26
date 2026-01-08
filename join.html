@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Camera Join</title>
+	<style>
+		:root {
+			color-scheme: light;
+			--bg: #f8fafc;
+			--border: #e5e7eb;
+			--text: #0f172a;
+			--muted: #6b7280;
+		}
+
+		* { box-sizing: border-box; }
+
+			body {
+				margin: 0;
+				min-height: 100vh;
+				background: var(--bg);
+				color: var(--text);
+				font-family: "Inter", system-ui, -apple-system, sans-serif;
+			}
+
+			.frame-wrap {
+				position: fixed;
+				inset: 0;
+				background: #000;
+			}
+
+			iframe {
+				width: 100%;
+				height: 100%;
+				border: none;
+				display: block;
+			}
+
+			.notice {
+				text-align: center;
+				color: var(--muted);
+				padding: 40px 24px;
+				max-width: 520px;
+				line-height: 1.5;
+				margin: 0 auto;
+			}
+	</style>
+</head>
+<body>
+		<div id="content"></div>
+
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const suppliedRoom = params.get("room");
+		const content = document.getElementById("content");
+
+		if (!suppliedRoom) {
+			content.innerHTML = `<div class="notice">Missing room code. Please open this page from the generated camera link.</div>`;
+		} else {
+			const room = suppliedRoom.replace(/[^a-zA-Z0-9]/g, "");
+			const joinUrl = `https://vdo.ninja/?room=${encodeURIComponent(room)}&autostart&webcam=1&audio=1&video=1&framerate=30&facingMode=environment&codec=vp8&audiobitrate=320&samplerate=48000&stereo=1&opusvoice=0&agc=1&noiseSuppression=0&echoCancellation=0&hidemenu=0&view=0&chatbutton=0&screensharebutton=1`;
+
+					const wrap = document.createElement("div");
+					wrap.className = "frame-wrap";
+					wrap.innerHTML = `
+						<iframe
+							src="${joinUrl}"
+							title="Camera Join"
+							allow="camera *; microphone *; display-capture *; autoplay *; clipboard-read *; clipboard-write *"
+							allowfullscreen
+							referrerpolicy="origin"
+						></iframe>
+					`;
+					content.replaceChildren(wrap);
+		}
+	</script>
+</body>
+</html>
