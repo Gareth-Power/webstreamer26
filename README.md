@@ -12,7 +12,7 @@ Powered by [VDO.Ninja](https://vdo.ninja) — peer-to-peer WebRTC streaming, no 
 
 ## Live app
 
-**[https://gpowe.github.io/webstreamer26/](https://gpowe.github.io/webstreamer26/)**
+**[https://gareth.power.github.io/WebAV/](https://gareth.power.github.io/WebAV/)**
 
 ---
 
