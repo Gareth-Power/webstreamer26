@@ -2,7 +2,7 @@
 	<img src="Thumb.png" alt="WebStreamer thumbnail" width="640">
 </p>
 
-# WebStreamer
+# WebAV
 
 A lightweight, no-install camera streaming tool for simulation and training environments. Built for the Simulation and Interactive Learning (SaIL) team at Guy's & St Thomas' NHS Foundation Trust.
 
